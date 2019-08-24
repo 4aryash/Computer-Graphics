@@ -176,8 +176,8 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(85,190);
 	glEnd();
 
-	float j;
-  for(j=0;j<640;j+=0.005){
+	float i;
+  for(i=0; i<640; i+=0.005){
     glBegin(GL_POLYGON);
     glColor3f(1,1,0);
     glVertex2f(30+j,20);
