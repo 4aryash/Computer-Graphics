@@ -176,6 +176,18 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(85,190);
 	glEnd();
 
+	float j;
+  for(j=0;j<640;j+=0.005){
+    glBegin(GL_QUADS);
+    glColor3f(1,1,0);
+    glVertex2f(30+j,20);
+    glVertex2f(22+j,33);
+    glVertex2f(56+j,33);
+    glVertex2f(48+j,20);
+    glEnd();
+
+	}
+
 glFlush();
 }
 
