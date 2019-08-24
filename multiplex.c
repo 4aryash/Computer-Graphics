@@ -215,13 +215,21 @@ glClearColor(0.0, 0.0, 0.0, 1);
 				glVertex2f(62+i+(sin(j)*radius), 400+(cos(j)*radius));
 		glEnd();
 
-    glBegin(GL_POLYGON);		//car
+    glBegin(GL_POLYGON);		//car forward
     glColor3f(0.8,0.28,0.27);
     glVertex2f(30+i,20);
     glVertex2f(30+i,40);
     glVertex2f(55+i,40);
     glVertex2f(55+i,20);
     glEnd();
+		glFlush();
+		glBegin(GL_POLYGON);		//car backward
+		glColor3f(0.8,0.28,0.27);
+		glVertex2f(640-i,100);
+		glVertex2f(640-i,120);
+		glVertex2f(595-i,120);
+		glVertex2f(595-i,100);
+		glEnd();
 		glFlush();
 
 	}
