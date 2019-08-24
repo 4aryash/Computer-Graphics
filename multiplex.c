@@ -115,33 +115,38 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(390,175);
 		glVertex2i(350,155);
 	glEnd();
-	glBegin(GL_LINE_LOOP);			//top floor
-	glColor4f(0,0,0,1);
+	glBegin(GL_POLYGON);			//top floor
+	glColor4f(0.29,0.28,0.38,1);
+		glVertex2i(350,315);
 		glVertex2i(150,315);
 		glVertex2i(150,305);
 		glVertex2i(350,305);
-		glVertex2i(390,325);
-		glVertex2i(390,335);
 		glVertex2i(350,315);
+		glVertex2i(390,335);
+		glVertex2i(390,325);
+		glVertex2i(350,305);
 	glEnd();
 	glBegin(GL_POLYGON);			//middle floor
-	glColor4f(0,0,0,1);
-		glVertex2i(150,280);
+	glColor4f(0.29,0.28,0.38,1);
+		glVertex2i(350,280);
+		glVertex2i(150,280);//TOP-LEFT
 		glVertex2i(150,260);
 		glVertex2i(350,260);
-		glVertex2i(390,280);
-		glVertex2i(390,300);
 		glVertex2i(350,280);
-		glVertex2i(150,280);
+		glVertex2i(390,300);
+		glVertex2i(390,280);
+		glVertex2i(350,260);
 	glEnd();
-	glBegin(GL_LINE_LOOP);			//first floor
-	glColor4f(0,0,0,1);
+	glBegin(GL_POLYGON);			//first floor
+	glColor4f(0.29,0.28,0.38,1);
+		glVertex2i(350,235);
 		glVertex2i(150,235);
 		glVertex2i(150,225);
 		glVertex2i(350,225);
-		glVertex2i(390,245);
-		glVertex2i(390,255);
 		glVertex2i(350,235);
+		glVertex2i(390,255);
+		glVertex2i(390,245);
+		glVertex2i(350,225);
 	glEnd();
 
 	glBegin(GL_POLYGON);			//Door
@@ -152,16 +157,20 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(290,156);
 	glEnd();
 
-	glBegin(GL_LINE_LOOP);			//tree
+	glBegin(GL_POLYGON);			//tree
 	glColor4f(0,0.5,0,1);
 		glVertex2i(75,190);
 		glVertex2i(80,220);
+		glVertex2i(85,220);
+		glVertex2i(90,190);
+		glVertex2i(85,220);
 		glVertex2i(75,220);
 		glVertex2i(82,250);
 		glVertex2i(90,220);
 		glVertex2i(85,220);
-		glVertex2i(90,190);
+		glVertex2i(80,220);
 		glVertex2i(75,190);
+		glVertex2i(90,190);
 	glEnd();
 	glVertex2i(80,220);
 	glVertex2i(75,220);
@@ -188,10 +197,13 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glEnd();
 
 		glBegin(GL_QUADS);		//cover for sun
-		glColor3f(0.51,0.54,0.55);
+		glColor3f(0.73,0.73,0.75);
 		glVertex2i(0,390);
+		glColor3f(0.73,0.73,0.75);
 		glVertex2i(640,390);
+		glColor3f(0.43,0.43,0.45);
 		glVertex2i(640,480);
+		glColor3f(0.53,0.53,0.55);
 		glVertex2i(0,480);
 		glEnd();
 
@@ -203,7 +215,7 @@ glClearColor(0.0, 0.0, 0.0, 1);
 				glVertex2f(62+i+(sin(j)*radius), 400+(cos(j)*radius));
 		glEnd();
 
-    glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);		//car
     glColor3f(0.8,0.28,0.27);
     glVertex2f(30+i,20);
     glVertex2f(30+i,40);
