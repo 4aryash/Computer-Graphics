@@ -124,7 +124,7 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(390,335);
 		glVertex2i(350,315);
 	glEnd();
-	glBegin(GL_LINE_LOOP);			//middle floor
+	glBegin(GL_POLYGON);			//middle floor
 	glColor4f(0,0,0,1);
 		glVertex2i(150,280);
 		glVertex2i(150,260);
@@ -132,6 +132,7 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(390,280);
 		glVertex2i(390,300);
 		glVertex2i(350,280);
+		glVertex2i(150,280);
 	glEnd();
 	glBegin(GL_LINE_LOOP);			//first floor
 	glColor4f(0,0,0,1);
@@ -178,22 +179,47 @@ glClearColor(0.0, 0.0, 0.0, 1);
 
 	float i;
   for(i=0; i<640; i+=0.005){
+		glBegin(GL_QUADS);		//cover for road
+		glColor3f(0.51,0.54,0.55);
+		glVertex2i(0,0);
+		glVertex2i(640,0);
+		glVertex2i(640,50);
+		glVertex2i(0,50);
+		glEnd();
+
+		glBegin(GL_QUADS);		//cover for sun
+		glColor3f(0.51,0.54,0.55);
+		glVertex2i(0,390);
+		glVertex2i(640,390);
+		glVertex2i(640,480);
+		glVertex2i(0,480);
+		glEnd();
+
+  	float radius;
+		glBegin(GL_POLYGON);        //moon
+		radius=12;
+		glColor3f(1,1,0);
+		for (float j = -pi; j <= pi; j += 0.005)
+				glVertex2f(62+i+(sin(j)*radius), 400+(cos(j)*radius));
+		glEnd();
+
     glBegin(GL_POLYGON);
-    glColor3f(1,1,0);
-    glVertex2f(30+j,20);
-    glVertex2f(30+j,33);
-    glVertex2f(48+j,33);
-    glVertex2f(48+j,20);
+    glColor3f(0.8,0.28,0.27);
+    glVertex2f(30+i,20);
+    glVertex2f(30+i,40);
+    glVertex2f(55+i,40);
+    glVertex2f(55+i,20);
     glEnd();
+		glFlush();
 
 	}
 
-glFlush();
+
 }
 
 void init(){
     glClearColor(1.0,0.9,0.7,0.0);
-    //glMatrixMode(GL_PROJECTION);
+    glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0,640,0,480);
 }
 
