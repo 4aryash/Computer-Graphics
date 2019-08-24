@@ -3,6 +3,8 @@
 #include<math.h>
 #define pi 3.142857
 float radius; //radius for all the circles
+float i;
+
 
 
 void hello(){
@@ -185,7 +187,50 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(85,190);
 	glEnd();
 
-	float i;
+	glBegin(GL_POLYGON);			//tree right 1
+	glColor4f(0,0.5,0,1);
+		glVertex2i(500,220);
+		glVertex2i(505,220);
+		glVertex2i(510,190);
+		glVertex2i(495,190);
+		glVertex2i(500,220);
+		glVertex2i(495,220);
+		glVertex2i(502,250);
+		glVertex2i(510,220);
+		glVertex2i(505,220);
+		glVertex2i(500,220);
+	glEnd();
+
+	glBegin(GL_POLYGON);			//tree bark right 1
+	glColor4f(0.2,0,0.03,1);
+		glVertex2i(500,190);
+		glVertex2i(500,180);
+		glVertex2i(505,180);
+		glVertex2i(505,190);
+	glEnd();
+
+	glBegin(GL_POLYGON);			//tree right 2
+	glColor4f(0,0.5,0,1);
+		glVertex2i(550,220);
+		glVertex2i(555,220);
+		glVertex2i(560,190);
+		glVertex2i(545,190);
+		glVertex2i(550,220);
+		glVertex2i(545,220);
+		glVertex2i(552,250);
+		glVertex2i(560,220);
+		glVertex2i(555,220);
+		glVertex2i(550,220);
+	glEnd();
+
+	glBegin(GL_POLYGON);			//tree bark right 2
+	glColor4f(0.2,0,0.03,1);
+		glVertex2i(550,190);
+		glVertex2i(550,180);
+		glVertex2i(555,180);
+		glVertex2i(555,190);
+	glEnd();
+
   for(i=0; i<640; i+=0.01){
 		glBegin(GL_QUADS);		//cover for bottom road
 		glColor3f(0.51,0.54,0.55);
@@ -216,7 +261,7 @@ glClearColor(0.0, 0.0, 0.0, 1);
 
 		glBegin(GL_POLYGON);        //sun
 		radius=14;
-		glColor3f(1,1,0);
+		glColor3f(0.97,0.56,0.14);
 		for (float j = -pi; j <= pi; j += 0.005)
 				glVertex2f(62+i+(sin(j)*radius), 410+(cos(j)*radius));
 		glEnd();
@@ -251,6 +296,21 @@ glClearColor(0.0, 0.0, 0.0, 1);
 
 }
 
+void mouse(int button, int state, int x, int y)
+{
+	if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN)
+	{
+		glBegin(GL_POLYGON);		//airplane
+		glColor3f(0,0,0);
+		glVertex2f(640-i,470);
+		glVertex2f(635-i,460);
+		glVertex2f(600-i,460);
+		glVertex2f(595-i,470);
+		glEnd();
+		glFlush();
+	}
+}
+
 void init(){
     glClearColor(0.8,1,1,0.0);
     glMatrixMode(GL_PROJECTION);
@@ -264,7 +324,7 @@ int main(int argc, char** argv){
     glutInitWindowPosition(0,0);
     glutCreateWindow("Multiplex");
     glutDisplayFunc(hello);
-    //glutMouseFunc(mouse);
+    glutMouseFunc(mouse);
     init();
     glutMainLoop();
     return 0;
