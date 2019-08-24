@@ -2,6 +2,7 @@
 #include<GL/glut.h>
 #include<math.h>
 #define pi 3.142857
+float radius; //radius for all the circles
 
 
 void hello(){
@@ -157,20 +158,18 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(290,156);
 	glEnd();
 
-	glBegin(GL_POLYGON);			//tree
+	glBegin(GL_POLYGON);			//tree left
 	glColor4f(0,0.5,0,1);
-		glVertex2i(75,190);
 		glVertex2i(80,220);
 		glVertex2i(85,220);
 		glVertex2i(90,190);
-		glVertex2i(85,220);
+		glVertex2i(75,190);
+		glVertex2i(80,220);
 		glVertex2i(75,220);
 		glVertex2i(82,250);
 		glVertex2i(90,220);
 		glVertex2i(85,220);
 		glVertex2i(80,220);
-		glVertex2i(75,190);
-		glVertex2i(90,190);
 	glEnd();
 	glVertex2i(80,220);
 	glVertex2i(75,220);
@@ -187,8 +186,8 @@ glClearColor(0.0, 0.0, 0.0, 1);
 	glEnd();
 
 	float i;
-  for(i=0; i<640; i+=0.005){
-		glBegin(GL_QUADS);		//cover for road
+  for(i=0; i<640; i+=0.01){
+		glBegin(GL_QUADS);		//cover for bottom road
 		glColor3f(0.51,0.54,0.55);
 		glVertex2i(0,0);
 		glVertex2i(640,0);
@@ -196,38 +195,53 @@ glClearColor(0.0, 0.0, 0.0, 1);
 		glVertex2i(0,50);
 		glEnd();
 
+		glBegin(GL_QUADS);		//cover for top road
+		glColor3f(0.51,0.54,0.55);
+		glVertex2i(0,100);
+		glVertex2i(640,100);
+		glVertex2i(640,120);
+		glVertex2i(0,120);
+		glEnd();
+
 		glBegin(GL_QUADS);		//cover for sun
-		glColor3f(0.73,0.73,0.75);
-		glVertex2i(0,390);
-		glColor3f(0.73,0.73,0.75);
-		glVertex2i(640,390);
-		glColor3f(0.43,0.43,0.45);
+		glColor3f(0.8,1,1);
+		glVertex2i(0,385);
+		glColor3f(0.8,1,1);
+		glVertex2i(640,385);
+		glColor3f(0.6,0.8,0.9);
 		glVertex2i(640,480);
-		glColor3f(0.53,0.53,0.55);
+		glColor3f(0.6,0.8,0.9);
 		glVertex2i(0,480);
 		glEnd();
 
-  	float radius;
-		glBegin(GL_POLYGON);        //moon
-		radius=12;
+		glBegin(GL_POLYGON);        //sun
+		radius=14;
 		glColor3f(1,1,0);
 		for (float j = -pi; j <= pi; j += 0.005)
-				glVertex2f(62+i+(sin(j)*radius), 400+(cos(j)*radius));
+				glVertex2f(62+i+(sin(j)*radius), 410+(cos(j)*radius));
 		glEnd();
 
-    glBegin(GL_POLYGON);		//car forward
-    glColor3f(0.8,0.28,0.27);
+    glBegin(GL_POLYGON);		//car1 forward
+    glColor3f(0,0,0);
     glVertex2f(30+i,20);
-    glVertex2f(30+i,40);
+    glVertex2f(35+i,40);
     glVertex2f(55+i,40);
-    glVertex2f(55+i,20);
+    glVertex2f(60+i,20);
     glEnd();
 		glFlush();
-		glBegin(GL_POLYGON);		//car backward
-		glColor3f(0.8,0.28,0.27);
+
+		glBegin(GL_POLYGON);        //car1 wheel
+		radius=5;
+		glColor3f(0,0,0);
+		for (float j = -pi; j <= pi; j += 0.005)
+				glVertex2f(35+i+(sin(j)*radius), 20+(cos(j)*radius));
+		glEnd();
+
+		glBegin(GL_POLYGON);		//car backward 1
+		glColor3f(0,0,0);
 		glVertex2f(640-i,100);
-		glVertex2f(640-i,120);
-		glVertex2f(595-i,120);
+		glVertex2f(635-i,120);
+		glVertex2f(600-i,120);
 		glVertex2f(595-i,100);
 		glEnd();
 		glFlush();
@@ -238,7 +252,7 @@ glClearColor(0.0, 0.0, 0.0, 1);
 }
 
 void init(){
-    glClearColor(1.0,0.9,0.7,0.0);
+    glClearColor(0.8,1,1,0.0);
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0,640,0,480);
 }
