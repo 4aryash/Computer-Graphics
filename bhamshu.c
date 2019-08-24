@@ -1,12 +1,11 @@
 #include<GL/glut.h>
-#include<iostream>
-using namespace std;
+#include<stdio.h>
 
 void init(void){
   glClearColor(0.0,0.6,0.7,0.0);
   glMatrixMode(GL_PROJECTION);
   glClear(GL_COLOR_BUFFER_BIT);
-  gluOrtho2D(0,500,0,500);
+  gluOrtho2D(720,-720,480,-480);
 }
 
 void LineSegment(void){
@@ -97,7 +96,7 @@ int main(int argc, char** argv){
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
   glutInitWindowPosition(50,100);
-  glutInitWindowSize(500,500);
+  glutInitWindowSize(1366,768);
   glutCreateWindow("Sample Programs");
 
   init();
