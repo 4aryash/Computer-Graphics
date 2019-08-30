@@ -52,7 +52,7 @@ void keyboard(unsigned char key, int x, int y)
 {
 	switch (key) {
 		case 'f':			//escape key
-			exit(0);
+			glutDestroyWindow(1);
 	}
 }
 
