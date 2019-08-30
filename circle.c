@@ -25,7 +25,7 @@ void keyboard(unsigned char key, int x, int y)
 void circle (void)
 {
 
-for (r=0.0; r<=1.0; r+=0.001)
+for (r=0.0; r<=1.0; r+=0.001)		//'+' maximizes the circle
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glBegin(GL_POINTS);
@@ -43,7 +43,7 @@ for (r=0.0; r<=1.0; r+=0.001)
 void circle1 (void)
 {
 
-for (r=1.0; r>=0.0; r-=0.001)
+for (r=1.0; r>=0.0; r-=0.001)		//'-' minimizing the circle
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glBegin(GL_POINTS);
