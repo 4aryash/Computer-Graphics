@@ -1,6 +1,5 @@
 #include<GL/glut.h>
-#include<iostream>
-using namespace std;
+#include<stdio.h>
 
 void init(void){
   glClearColor(0.0,0.6,0.7,0.0);
@@ -59,24 +58,24 @@ void LineSegment(void){
   glFlush();
 }
 int x1;
-int yy;
+int y1;
 void mousePtPlot(GLint button, GLint action, GLint xMouse, GLint yMouse){
   if(button == GLUT_LEFT_BUTTON && action==GLUT_DOWN)
   {
       glClear(GL_COLOR_BUFFER_BIT);
       x1=xMouse;
-      yy=500-yMouse;
+      y1=500-yMouse;
 
       glPointSize(10);
 
       glBegin(GL_POINTS);
       glColor3f(1,0,0);
-      glVertex2i(x1,yy);
+      glVertex2i(x1,y1);
       glEnd();
       LineSegment();
       glFlush();
       //plotpoint(x1,y1);
-      cout<<"First point is: "<<x1<<"and"<<yy;
+      printf("First point is:", &x1,&y1);
 
   }
 }
