@@ -10,35 +10,37 @@ void init(void){
 }
 
 void mousePtPlot(GLint button, GLint action, GLint xMouse, GLint yMouse){
-  if(button == GLUT_LEFT_BUTTON && action==GLUT_DOWN)
+  if(button == GLUT_LEFT_BUTTON && action==GLUT_DOWN)     //on clicking the left mouse button, the first coordinates x1,y1 are formed.
   {
-      glClear(GL_COLOR_BUFFER_BIT);
-      x1 = xMouse;
-      y1 = 500-yMouse;
+      //glClear(GL_COLOR_BUFFER_BIT);
+      x1 = xMouse;        //x coordinate is formed from the bottom-left screen.
+      y1 = 500-yMouse;    //y coordinate is formed from the top-left screen, so we subtract the window-size from the y-coordinates
 
-      glPointSize(10);
+      glPointSize(10);    //size of the point formed
 
       glBegin(GL_POINTS);
         glColor3f(1.0,0.01,0.24);
         glVertex2i(x1,y1);
       glEnd();
       glFlush();
-      printf("Left Click at: (%d,%d)\n",x1,y1);
+      printf("Left Click at: (%d,%d)\n",x1,y1);   //a point red in color, is formed
   }
 
   if(button == GLUT_RIGHT_BUTTON && action==GLUT_DOWN)
   {
-      glClear(GL_COLOR_BUFFER_BIT);
+      //glClear(GL_COLOR_BUFFER_BIT);
 
-      x2 = xMouse;
-      y2 = 500-yMouse;
+      x2 = xMouse;        //x coordinate is formed from the bottom-left screen.
+      y2 = 500-yMouse;    //y coordinate is formed from the top-left screen, so we subtract the window-size from the y-coordinates
 
       glPointSize(10);
 
       glBegin(GL_POINTS);
-        glColor3f(1.0,0.01,0.24);
+        glColor3f(0.0,0.24,0.01);
         glVertex2i(x2,y2);
       glEnd();
+      Line();
+
       glFlush();
       printf("Right Click at: (%d,%d)\n\n",x2,y2);
   }
