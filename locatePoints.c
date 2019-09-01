@@ -3,13 +3,13 @@
 int x1,y1,x2,y2;
 
 void init(void){
-  glClearColor(1.0,0.7,0.0,0.0);
+  glClearColor(1.0,0.7,0.0,0.0);    //background is set to a shade of yellow
   glMatrixMode(GL_PROJECTION);
   glClear(GL_COLOR_BUFFER_BIT);
   gluOrtho2D(0,500,0,500);
 }
 
-void mousePtPlot(GLint button, GLint action, GLint xMouse, GLint yMouse){
+void mousePt(GLint button, GLint action, GLint xMouse, GLint yMouse){
   if(button == GLUT_LEFT_BUTTON && action==GLUT_DOWN)     //on clicking the left mouse button, the first coordinates x1,y1 are formed.
   {
       //glClear(GL_COLOR_BUFFER_BIT);
@@ -42,14 +42,14 @@ void mousePtPlot(GLint button, GLint action, GLint xMouse, GLint yMouse){
       Line();
 
       glFlush();
-      printf("Right Click at: (%d,%d)\n\n",x2,y2);
+      printf("Right Click at: (%d,%d)\n\n",x2,y2);    //a point blue in color, is formed
   }
 }
 
 void Line(void){
   glBegin(GL_LINES);
     glVertex2i(x1,y1);
-    glVertex2i(x2,y2);
+    glVertex2i(x2,y2);    //a line is formed with amongst these points.
   glEnd();
 }
 
@@ -61,8 +61,8 @@ int main(int argc, char** argv){
   glutCreateWindow("Locate Points");
 
   init();
-  glutDisplayFunc(Line);
-  glutMouseFunc(mousePtPlot);
+  glutDisplayFunc(Line);    //line function is called
+  glutMouseFunc(mousePt);   //mousePt function is called
   glutMainLoop();
   return 0;
 }
