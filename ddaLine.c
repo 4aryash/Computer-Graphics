@@ -5,32 +5,33 @@ float X1,X2,Y1,Y2;
 
 void Line(void)
 {
-	float dy,dx,step,x,y,k,Xin,Yin;
+	float dy,dx,steps,x,y,k,Xin,Yin;
 	dx=X2-X1;
 	dy=Y2-Y1;
 
-	if(abs(dx)> abs(dy)){
-		step = abs(dx);
+	if(abs(dx) > abs(dy)){
+		steps = abs(dx);
 	}
 	else
-		step = abs(dy);
+		steps = abs(dy);
 
-	Xin = dx/step;
-	Yin = dy/step;
+	Xin = dx/steps;
+	Yin = dy/steps;
 
 	x= X1;
-	y=X1;
+	y=Y1;
+
 	glBegin(GL_LINES);
 		glVertex2i(x,y);
 	glEnd();
 
-	for (k=1 ;k<=step;k++){
+	for (k=0 ; k<=steps; k++){
 		x= x + Xin;
 		y= y + Yin;
 		glBegin(GL_POINTS);
 			glVertex2i(x,y);
 		glEnd();
-	}	
+	}
 
 	glFlush();
 }
