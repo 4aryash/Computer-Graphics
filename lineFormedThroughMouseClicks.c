@@ -9,7 +9,22 @@ void init(void){
   gluOrtho2D(0,600,0,600);
 }
 
+void slopedisplay(char *s)    //string diaplay
+{
+  char *c;
+  glRasterPos2f(400,50);
+  for(c = s; *c!='\0';c++)
+  {
+    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *c);
+  }
+  glFlush();
+
+}
+
 void mousePt(GLint button, GLint action, GLint xMouse, GLint yMouse){
+  glColor3f(0,0,0);
+  slopedisplay("AARYASH SINHA  002");
+
   if(button == GLUT_LEFT_BUTTON && action==GLUT_DOWN)     //on clicking the left mouse button, the first coordinates x1,y1 are formed.
   {
       //glClear(GL_COLOR_BUFFER_BIT);
