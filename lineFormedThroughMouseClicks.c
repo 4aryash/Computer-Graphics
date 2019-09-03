@@ -18,7 +18,6 @@ void slopedisplay(char *s)    //string diaplay
     glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *c);
   }
   glFlush();
-
 }
 
 void mousePt(GLint button, GLint action, GLint xMouse, GLint yMouse){
