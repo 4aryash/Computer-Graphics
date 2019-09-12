@@ -1,43 +1,66 @@
-#include<GL/glut.h>
-#include<stdlib.h>
-#include<stdbool.h>
-#include<math.h>
-#define pi 3.142857
+#include <GL/glut.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+int h,k;
+float a,b;
 
-float rad, DEG2RAD;
-void init(void){
-  glClearColor(1.0,0.7,0.0,0.0);    //background is set to a shade of yellow
-  glMatrixMode(GL_PROJECTION);
-  glClear(GL_COLOR_BUFFER_BIT);
-  gluOrtho2D(0,600,0,600);
-}
-
-void ellipse(float radiusX, float radiusY)
+void display(void)
 {
-   int i;
+ double I,J;
+ int i,j;
+ glClear (GL_COLOR_BUFFER_BIT);
+ glColor3f(1.0,0.01,0.24);
+ glBegin(GL_POINTS);
+ glVertex2s(h,k);
 
-   glBegin(GL_LINE_LOOP);
+ for( i=0 ; i<=a ; i+=1)
+ {
+ J=sqrt(1 - (i*i)/(a*a))*b;
+ j=(int)(J);
+ glVertex2s(h+i,k+j);
+ glVertex2s(h-i,k+j);
+ glVertex2s(h-i,k-j);
+ glVertex2s(h+i,k-j);
+ }
 
-   for(i=0;i<360;i++)
-   {
-      rad = i*DEG2RAD;
-      glVertex2f(cos(rad)*radiusX,
-                  sin(rad)*radiusY);
-   }
+ glColor3f (0.0, 0.0, 0.0);
+ for(int i=-100 ; i<=100 ; i++)   //x axis formation
+ {
+ glVertex2s(i,0);
+ glVertex2s(0,i);
+ }
 
-   glEnd();
-   glFlush();
+ for(int i=-2; i<=2 ; i++)      //y axis formation
+ {
+ glVertex2s(95+i,4+i);
+ glVertex2s(95-i,4+i);
+ }
+
+ glEnd();
+ glFlush();
 }
 
-int main(int argc, char** argv){
-  glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-  glutInitWindowPosition(100,100);
-  glutInitWindowSize(600,600);
-  glutCreateWindow("Ellipse");
+void init(void)
+{
+ glClearColor (1.7, 0.7, 0.0, 0.0);
+ glOrtho(-100.0, 100.0, -100.0, 100.0, -1.0, 1.0);
+}
 
-  init();
-  glutDisplayFunc(ellipse);    //line function is called
-  glutMainLoop();
-  return 0;
+int main(int argc, char** argv)
+{
+ printf("Enter the center of ellipse:\n");
+ scanf("%d %d",&h,&k);
+ printf("Enter the parameters a & b:\n");
+ scanf("%f %f",&a,&b);
+
+ glutInit(&argc, argv);
+ glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+ glutInitWindowSize (500, 500);
+ glutInitWindowPosition (100, 100);
+ glutCreateWindow ("Ellipse");
+ init ();
+ glutDisplayFunc(display);
+ glutMainLoop();
+ return 0;
 }
