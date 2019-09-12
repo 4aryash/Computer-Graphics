@@ -11,6 +11,7 @@ void init(void){
 
 void drawEllipse(float xc, float yc, float x, float y)
 {
+  glFlush();
     int p1[] = {(int)xc+x, (int)yc+y};
     int p2[] = {(int)xc-x, (int)yc+y};
     int p3[] = {(int)xc+x, (int)yc-y};
@@ -67,10 +68,10 @@ int main(int argc, char** argv){
   glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
   glutInitWindowPosition(100,100);
   glutInitWindowSize(600,600);
-  glutCreateWindow("Locate Points");
+  glutCreateWindow("Ellipse");
 
   init();
-  glutDisplayFunc(Line);    //line function is called
+  glutDisplayFunc(drawEllipse);    //line function is called
   glutMainLoop();
   return 0;
 }
