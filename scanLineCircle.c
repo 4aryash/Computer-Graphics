@@ -4,38 +4,45 @@
 #include <stdlib.h>
 int h,k,r;
 void scanline(int,int);
-void circle(void);
+void ellipse(void);
 void XYaxes(void);
 
 void display(void)
  {
  glClear (GL_COLOR_BUFFER_BIT);
- glColor3f (1.0, 0.0, 0.0);
+ glColor3f(1.0,0.01,0.24);
  glBegin(GL_POINTS);
- circle();
+ ellipse();
  glEnd();
  glFlush();
  }
- void scanline(int ax, int by)
+
+void scanline(int ax, int by)
 {
  int varx;
  for(varx=h+ax ; varx>=(h-ax) ; varx--)
  glVertex2s(varx,by);
 }
-void circle(void)
+
+void ellipse(void)
 {
- double XEnd,J;
+ double I,J;
  int i,j;
- XEnd=(r/1.414);
- for( i=0 ; i<=XEnd ; i++)
+
+ glBegin(GL_POINTS);
+ glVertex2s(h,k);
+
+ for( i=0 ; i<=a ; i+=1)
  {
- J=sqrt(r*r - i*i);
+ J=sqrt(1 - (i*i)/(a*a))*b;
  j=(int)(J);
- scanline(i, j);
- scanline(j, i);
- scanline(j,-i);
- scanline(i,-j);
+ glVertex2s(h+i,k+j);
+ glVertex2s(h-i,k+j);
+ glVertex2s(h-i,k-j);
+ glVertex2s(h+i,k-j);
  }
+ glEnd();
+
  XYaxes();
  glVertex3s(h,k,-25);
 }
