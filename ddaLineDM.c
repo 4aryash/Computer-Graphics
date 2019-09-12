@@ -23,7 +23,7 @@ void init(void)
 void slopedisplay(char *s)
 {
   char *c;
-  glRasterPos2f(210,480);   //coordinates where the slope of the line will be displayed
+  glRasterPos2f(200,470);   //coordinates where the slope of the line will be displayed
   for(c = s; *c!='\0';c++)
   {
     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);    //helvetica font with font size 18
@@ -36,6 +36,7 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0,0.01,0.24);
     glBegin(GL_POLYGON);
+
     for(double i=0; i<2*3.14; i+=(2*3.14)/100)
     {
       glVertex2f((arrx[1])+cos(i)*5, (500-arry[1])+sin(i)*5);
@@ -55,6 +56,7 @@ void display(){
     char buf[50];
     gcvt(m, 10, buf);
 
+    //slopedisplay("Aaryash Sinha 002");
     slopedisplay(buf);
     if(m<=1 && m>=-1)
     {
