@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stdlib.h>
 int h,k,r;
+float a,b;
+
 void scanline(int,int);
 void ellipse(void);
 void XYaxes(void);
@@ -28,7 +30,7 @@ void ellipse(void)
 {
  double I,J;
  int i,j;
-
+ glClear (GL_COLOR_BUFFER_BIT);
  glBegin(GL_POINTS);
  glVertex2s(h,k);
 
@@ -47,7 +49,7 @@ void ellipse(void)
  glVertex3s(h,k,-25);
 }
 
-void XYaxes(void)
+void XYaxes(void)     //making of the x and y axis
 {
  int i;
  glColor3f (1.0, 1.0, 1.0);
@@ -68,22 +70,25 @@ void XYaxes(void)
  glVertex2s(4,95-i);
  }
 }
- void init(void)
- {
+
+void init(void)
+{
  glClearColor (0.0, 0.0, 0.0, 0.0);
  glOrtho(-100.0, 100.0, -100.0, 100.0, -1.0, 1.0);
- }
+}
+
 int main(int argc, char** argv)
 {
  glutInit(&argc, argv);
  glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
  glutInitWindowSize (500, 500);
  glutInitWindowPosition (100, 100);
- printf("Enter the center of circle:\n");
+ printf("Enter the center of ellipse:\n");
  scanf("%d %d",&h,&k);
- printf("Enter the radius:\n");
- scanf("%d",&r);
- glutCreateWindow ("Circle : Scanline Filling Method ");
+ printf("Enter the parameters a & b:\n");
+ scanf("%f %f",&a,&b);
+
+ glutCreateWindow ("Scan Line Fill");
  init ();
  glutDisplayFunc(display);
  glutMainLoop();
