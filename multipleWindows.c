@@ -23,18 +23,22 @@ int main(int argc, char** argv)
  glutInit(&argc, argv);
  glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
 
- GLint WindowID1, WindowID2, WindowID3;       // window ID numbers
- glutInitWindowSize(685.0, 350.0);           // set a window size
+ GLint WindowID1, WindowID2, WindowID3, WindowID4;       // window ID numbers
+ glutInitWindowSize(685.0, 340.0);           // set a window size
  glutInitWindowPosition(0,0);              // set a window position
  WindowID1 = glutCreateWindow("CCTV 1"); // Create window 1
 
- glutInitWindowSize(685.0, 350.0);           // set a window size
+ glutInitWindowSize(685.0, 340.0);           // set a window size
  glutInitWindowPosition(685,0);             // set a window position
  WindowID2 = glutCreateWindow("CCTV 2"); // Create window 2
 
- glutInitWindowSize(685.0, 350.0);           // set a window size
- glutInitWindowPosition(0,350);             // set a window position
+ glutInitWindowSize(685.0, 340.0);           // set a window size
+ glutInitWindowPosition(0,405);             // set a window position
  WindowID3 = glutCreateWindow("CCTV 3"); // Create window 2
+
+ glutInitWindowSize(685.0, 340.0);           // set a window size
+ glutInitWindowPosition(685,405);             // set a window position
+ WindowID4 = glutCreateWindow("CCTV 4"); // Create window 2
 
  init ();
  glutDisplayFunc(display);
