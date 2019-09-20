@@ -65,11 +65,13 @@ int main(int argc, char** argv)
 
  glutInitWindowSize(685.0, 340.0);           // set a window size
  glutInitWindowPosition(0,405);             // set a window position
- WindowID3 = glutCreateWindow("CCTV 3"); // Create window 2
+ WindowID3 = glutCreateWindow("CCTV 3"); // Create window 3
+ glutDisplayFunc(circle1);               //calling the circle maximizing function
 
  glutInitWindowSize(685.0, 340.0);           // set a window size
  glutInitWindowPosition(685,405);             // set a window position
- WindowID4 = glutCreateWindow("CCTV 4"); // Create window 2
+ WindowID4 = glutCreateWindow("CCTV 4"); // Create window 4
+ glutDisplayFunc(circle);               //calling the circle maximizing function
 
  init ();
  glutMainLoop();
